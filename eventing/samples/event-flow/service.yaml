@@ -12,11 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: feeds.knative.dev/v1alpha1
-kind: EventType
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
 metadata:
-  name: receive
+  name: iot-function
   namespace: default
 spec:
-  eventSource: gcppubsub
-  description: "subscription for receiving pubsub messages"
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: github.com/knative/docs/eventing/samples/event-flow

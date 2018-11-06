@@ -12,16 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: serving.knative.dev/v1alpha1
-kind: Configuration
-metadata:
-  name: iot-function
-  namespace: default
-spec:
-  revisionTemplate:
-    metadata:
-      labels:
-        knative.dev/type: container
-    spec:
-      container:
-        image: github.com/mchmarny/next18/event-flow
