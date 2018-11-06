@@ -25,7 +25,7 @@ Run the following command to create a device registry:
 gcloud iot registries create $IOTCORE_REG \
     --project=$IOTCORE_PROJECT \
     --region=$IOTCORE_REGION \
-    --event-notification-config=$IOTCORE_TOPIC_DATA \
+    --event-notification-config=topic=$IOTCORE_TOPIC_DATA \
     --state-pubsub-topic=$IOTCORE_TOPIC_DEVICE
 ```
 
@@ -47,7 +47,7 @@ gcloud iot devices create $IOTCORE_DEVICE \
   --project=$IOTCORE_PROJECT \
   --region=$IOTCORE_REGION \
   --registry=$IOTCORE_REG \
-  --public-key path=./rsa_public.pem,type=rs256
+  --public-key path=./rsa_public.pem,type=rsa-pem
 ```
 
 ## Generate data
@@ -61,7 +61,7 @@ node send-data.js \
     --cloudRegion=$IOTCORE_REGION \
     --registryId=$IOTCORE_REG \
     --deviceId=$IOTCORE_DEVICE \
-    --privateKeyFile=./iot_demo_private.pem \
+    --privateKeyFile=./rsa_private.pem \
     --algorithm=RS256
 ```
 
